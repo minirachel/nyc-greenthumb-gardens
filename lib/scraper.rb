@@ -9,10 +9,11 @@ class Scraper
     def self.scrape_map_hash
         browser = Watir::Browser.new
         browser.goto("https://nycfridge.com/")
-        js_doc = browser.element(css: "div.app").wait_until(&:present?)
+        js_doc = browser.element(css: "div.container_Container__X1m1k").wait_until(&:present?)
         map = Nokogiri::HTML(js_doc.inner_html)
-        desired_results = doc.css("div.app")
+        desired_results = map.css("div.container_Container__X1m1k").first
         
+        binding.pry
         # site = open("https://nycfridge.com/")
         # page = Nokogiri::HTML(site)
         # map = page.css("div.pin").first
@@ -41,3 +42,7 @@ class Scraper
 
 end
 
+# includes? "popupBubble".children.text == NAME AND ADDRESS
+# #(Attr:0x3ff84f21c730 {
+#     name = "class",
+#     value = "StyledBox-sc-13pk1d4-0 hcvciW Modal_popupBubble__1Z61H"

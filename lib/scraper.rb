@@ -1,36 +1,34 @@
 require 'open-uri'
 require 'pry'
 require 'nokogiri'
-require 'watir'
-require 'webdrivers'
 
 class Scraper
 
     def self.scrape_map_hash
-        browser = Watir::Browser.new
-        browser.goto("https://nycfridge.com/")
-        js_doc = browser.element(css: "div.container_Container__X1m1k").wait_until(&:present?)
-        map = Nokogiri::HTML(js_doc.inner_html)
-        desired_results = map.css("div.container_Container__X1m1k").first
+        # browser = Watir::Browser.new
+        # browser.goto("https://nycfridge.com/")
+        # js_doc = browser.element(css: "div.container_Container__X1m1k").wait_until(&:present?)
+        # map = Nokogiri::HTML(js_doc.inner_html)
+        # desired_results = map.css("div.container_Container__X1m1k").first
+        # browser.quit()
         
-        binding.pry
-        # site = open("https://nycfridge.com/")
-        # page = Nokogiri::HTML(site)
-        # map = page.css("div.pin").first
-        # binding.pry
+        site = open("https://www.nycgovparks.org/programs/wildlife-management/calendar/")
+        page = Nokogiri::HTML(site)
+        calendar = page.css("div.tab-content").first
 
-        # fridges = {}
+        animals = []
 
-        # map = 
-
-        # map.css("div.pin").each do |pin|
-        #     fridges << {
-                
-        #     }
+        calendar.css("div.tab-pane").each do |animal|
+            animals << {
+                :month => animal.css("h3").text,
+                :name => animal.css("h4").text,
+                :info => animal.css("p").text,
+            }
             
-        # end
+        animals
+        binding.pry
+        end
 
-        puts "hello"
     end
 
     self.scrape_map_hash

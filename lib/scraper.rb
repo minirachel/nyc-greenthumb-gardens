@@ -3,10 +3,10 @@ require 'httparty'
 
 class Scraper
 
-    def self.scrape_tree_census
-        site = 'https://data.cityofnewyork.us/resource/uvpi-gqnh.json'
+    def self.scrape_greengardens
+        site = 'https://data.cityofnewyork.us/resource/p78i-pat6.json'
         page = HTTParty.get(site)
-        census = page.to_a
+        gardens = page.to_a
 
         binding.pry
 
@@ -22,7 +22,7 @@ class Scraper
     
     end
 
-    self.scrape_tree_census 
+    self.scrape_greengardens
 
 end
 

@@ -1,48 +1,48 @@
-require 'open-uri'
 require 'pry'
-require 'nokogiri'
-require 'watir'
-require 'webdrivers'
+require 'httparty'
 
 class Scraper
 
-    def self.scrape_map_hash
-        browser = Watir::Browser.new
-        browser.goto("https://nycfridge.com/")
-        js_doc = browser.element(css: "div.container_Container__X1m1k").wait_until(&:present?)
-        map = Nokogiri::HTML(js_doc.inner_html)
-        desired_results = map.css("div.container_Container__X1m1k").first
-        
+    def self.scrape_greengardens
+        site = 'https://data.cityofnewyork.us/resource/p78i-pat6.json'
+        page = HTTParty.get(site)
+        gardens = page.to_a
+
         binding.pry
-        # site = open("https://nycfridge.com/")
-        # page = Nokogiri::HTML(site)
-        # map = page.css("div.pin").first
-        # binding.pry
 
-        # fridges = {}
+        info = []
 
-        # map = 
+        # reports.css("div.tab-pane").each do |requests|
+        #     info << {
 
-        # map.css("div.pin").each do |pin|
-        #     fridges << {
-                
         #     }
-            
         # end
-
-        puts "hello"
+            
+        info
+    
     end
 
-    self.scrape_map_hash
-
-    def math
-        equation = 2 + 2
-        equation
-    end
+    self.scrape_greengardens
 
 end
 
-# includes? "popupBubble".children.text == NAME AND ADDRESS
-# #(Attr:0x3ff84f21c730 {
-#     name = "class",
-#     value = "StyledBox-sc-13pk1d4-0 hcvciW Modal_popupBubble__1Z61H"
+    # def self.scrape_animal_calendar
+    #     #BORING parks idea but I tried nokogiri
+    #     site = open("https://www.nycgovparks.org/programs/wildlife-management/calendar/")
+    #     page = Nokogiri::HTML(site)
+    #     calendar = page.css("div.tab-content").first
+
+    #     animals = []
+
+    #     calendar.css("div.tab-pane").each do |animal|
+    #         animals << {
+    #             :month => animal.css("h3").text,
+    #             :name => animal.css("h4").text,
+    #             :info => animal.css("p").text,
+    #         }
+            
+    #     animals
+
+    #     end
+
+    # end

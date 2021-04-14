@@ -7,9 +7,6 @@ class Scraper
         site = 'https://data.cityofnewyork.us/resource/p78i-pat6.json'
         page = HTTParty.get(site)
         gardens = page.to_a
-
-        binding.pry
-
         info = []
 
         # reports.css("div.tab-pane").each do |requests|

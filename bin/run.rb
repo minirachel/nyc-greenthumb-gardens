@@ -1,2 +1,2 @@
-require_relative '../config.rb'
-require_relative '..lib/scraper'
+#!/usr/bin/env ruby
+require_relative '../config/environment.rb'

@@ -1,25 +1,33 @@
+require_relative './garden.rb'
 require 'pry'
 require 'httparty'
 
+
 class Scraper
 
-    def self.scrape_greengardens
+    def self.gardens_api
         site = 'https://data.cityofnewyork.us/resource/p78i-pat6.json'
         page = HTTParty.get(site)
-        gardens = page.to_a
-        info = []
-
-        # reports.css("div.tab-pane").each do |requests|
-        #     info << {
-
-        #     }
-        # end
-            
-        info
-    
+        greenthumb_gardens = page.to_a
+        greenthumb_gardens
     end
 
-    self.scrape_greengardens
+    # initialize (borough, gardenname, multipolygon, parksid, status, zipcode)
+
+    def self.make_symbols
+        gardens_symbols = []
+
+            self.gardens_api.each do |gardens_hash|
+                gardens_symbols << gardens_hash.transform_keys(&:to_sym)
+            end
+
+        gardens_symbols
+    end
+
+
+
+
+
 
 end
 

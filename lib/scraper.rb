@@ -1,4 +1,4 @@
-require_relative './garden.rb'
+require_relative '../config/environment.rb'
 require 'pry'
 require 'httparty'
 
@@ -12,9 +12,7 @@ class Scraper
         greenthumb_gardens
     end
 
-    # initialize (borough, gardenname, multipolygon, parksid, status, zipcode)
-
-    def self.make_symbols
+    def self.create_symbols
         gardens_symbols = []
 
             self.gardens_api.each do |gardens_hash|
@@ -24,30 +22,10 @@ class Scraper
         gardens_symbols
     end
 
-
-
-
-
+    def self.garden_hashes
+        self.create_symbols.each do |g|
+            Garden.new(g[:borough], g[:gardenname], g[:multipolygon], g[:parksid], g[:status], g[:zipcode])
+        end
+    end
 
 end
-
-    # def self.scrape_animal_calendar
-    #     #BORING parks idea but I tried nokogiri
-    #     site = open("https://www.nycgovparks.org/programs/wildlife-management/calendar/")
-    #     page = Nokogiri::HTML(site)
-    #     calendar = page.css("div.tab-content").first
-
-    #     animals = []
-
-    #     calendar.css("div.tab-pane").each do |animal|
-    #         animals << {
-    #             :month => animal.css("h3").text,
-    #             :name => animal.css("h4").text,
-    #             :info => animal.css("p").text,
-    #         }
-            
-    #     animals
-
-    #     end
-
-    # end

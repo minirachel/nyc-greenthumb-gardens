@@ -21,7 +21,7 @@ class Garden
         @@all
     end
 
-    def print_borough
+    def translate_borough
         if @borough == "B"
             "Brooklyn"
         elsif @borough == "X"
@@ -40,24 +40,29 @@ class Garden
         puts "------------------------------------"
         puts " ~*~ #{@gardenname} ~*~"
         puts "  ##{@parksid}"
-        puts "  #{print_borough} - ZIP Code: #{@zipcode}"
+        puts "  #{translate_borough} - ZIP Code: #{@zipcode}"
         # puts " #{shape_print}"
+        #value is nil due to puts
     end
-    #need to add argument
 
     def self.all_gardens_detail
         @@all.each {|g| g.index_card}
     end
 
-    def self.gardens_by_borough(x)
-        @@all.select{|g| g.borough == x}.each {|b| b.index_card}
+    def self.filter_by_borough(x)
+        @@all.select{|g| g.borough == x}
+        #select creates a new array with all gardens (object IDs) that match it
+        #map checks for argument (True/False)
+
     end
 
     #TO FIX
-    #borough '
-        #translate from letter to full name
-    #parksid is showing status
     #filter by status?
+
+
+
+
+    # @@all.select{|g| g.borough == "R"}.each {|b| b.index_card}
 
 
 
@@ -74,8 +79,6 @@ class Garden
         #top 5 zip codes, list gardens by name and ID number
     # print_all_gardens_summary
         #total active garden count, drills down by number by boroughs, top 10 zip codes overall
-    # print_all_gardens
-        #list every garden by name, ID number, borough, and ZIP (sort by borough, then ZIP)
     # print_garden_by_ZIP
         #total active gardens in ZIP code, lists all gardens by name, ID number, and shape
         # full index card format

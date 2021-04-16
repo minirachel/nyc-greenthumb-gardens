@@ -21,44 +21,34 @@ class Garden
         @@all
     end
 
-    def translate_borough
-        if @borough == "B"
+    def self.translate_borough(borough)
+        if borough == "B"
             "Brooklyn"
-        elsif @borough == "X"
+        elsif borough == "X"
             "Bronx"
-        elsif @borough == "M"
+        elsif borough == "M"
             "Manhattan"
-        elsif @borough == "Q"
+        elsif borough == "Q"
             "Queens"
-        elsif @borough == "R"
+        elsif borough == "R"
             "Roosevelt Island"
         end 
     end
 
 
-    def index_card
-        puts "------------------------------------"
-        puts " ~*~ #{@gardenname} ~*~"
-        puts "  ##{@parksid}"
-        puts "  #{translate_borough} - ZIP Code: #{@zipcode}"
-        # puts " #{shape_print}"
-        #value is nil due to puts
-    end
-
-    def self.all_gardens_detail
-        @@all.each {|g| g.index_card}
-    end
-
-    def self.filter_by_borough(x)
-        @@all.select{|g| g.borough == x}
+    def self.filter_by_borough(borough)
+        @@all.select {|g| g.borough == borough}
         #select creates a new array with all gardens (object IDs) that match it
         #map checks for argument (True/False)
-
     end
 
-    #TO FIX
-    #filter by status?
+    def self.filter_by_zip(zip)
+        @@all.select {|g| g.zip == zip}
+    end
 
+    def self.filter_by_status(status)
+        @@all.select {|g| g.status == status}
+    end
 
 
 

@@ -31,7 +31,7 @@ class Garden
         elsif borough == "Q"
             "Queens"
         elsif borough == "R"
-            "Roosevelt Island"
+            "Staten Island"
         end 
     end
 

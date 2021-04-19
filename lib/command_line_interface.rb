@@ -7,10 +7,11 @@ class CommandLineInterface
     #could switch make_gardens to initialize?
 
     def run
-        make_gardens
-        puts "Welcome to GreenThumb the unofficial NYC Parks GreenThumb app."
-        puts "What are you interested in learning about today? Enter a number and I’ll give you more info :)" 
-        index_card(random_garden)
+        puts "This is a test."
+        # make_gardens
+        # puts "Welcome to GreenThumb the unofficial NYC Parks GreenThumb app."
+        # puts "What are you interested in learning about today? Enter a number and I’ll give you more info :)" 
+        # index_card(random_garden)
     end
 
     def make_gardens

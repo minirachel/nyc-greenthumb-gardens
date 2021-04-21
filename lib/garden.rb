@@ -42,12 +42,28 @@ class Garden
         #map checks for argument (True/False)
     end
 
-    def self.filter_by_zip(zip)
-        @@all.select {|g| g.zip == zip}
+    def self.filter_by_zip(zipcode)
+        @@all.select {|g| g.zipcode == zipcode}
     end
 
     def self.filter_by_status(status)
         @@all.select {|g| g.status == status}
+    end
+
+    def self.zip_hash
+        zipcode_count = {}
+
+        @@all.each do |g|
+            if zipcode_count.include?(g.zipcode)
+                zipcode_count[g.zipcode] => +1
+            else
+                zipcode_count[g.zipcode] => 1
+            end
+        end
+        binding.pry
+        zipcode_count
+
+        #cleaner way to do this?
     end
 
 

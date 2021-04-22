@@ -10,7 +10,7 @@ class CommandLineInterface
     #switched make_gardens to initialize?
 
     def run
-        Garden.zip_hash
+        menu
     end
 
     def menu
@@ -43,7 +43,7 @@ class CommandLineInterface
                                 puts "#{Garden.filter_by_borough("M").count} in Manhattan."
                                 puts "#{Garden.filter_by_borough("B").count} in Brooklyn."
                                 puts "#{Garden.filter_by_borough("M").count} in Staten Island."
-                                # puts "The ZIP codes with the most gardens are: #{Garden.all.}"
+                                # puts "The ZIP codes with the most gardens are: #{Garden.top_zipcodes}"
                                 #number of garden count total
                                 #number of gardens by borough
                                 #top 5 zip codes

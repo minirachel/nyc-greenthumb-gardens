@@ -50,23 +50,24 @@ class Garden
         @@all.select {|g| g.status == status}
     end
 
-    def self.zip_hash
+    def zipcode_hash
         zipcode_count = {}
 
         @@all.each do |g|
-            if zipcode_count.include?(g.zipcode)
-                zipcode_count[g.zipcode] => +1
-            else
-                zipcode_count[g.zipcode] => 1
-            end
+            zipcode_count[g.zipcode] = self.filter_by_zip(g.zipcode).count
         end
-        binding.pry
+
         zipcode_count
 
-        #cleaner way to do this?
+        #was there an easier way to do this?
     end
 
+    def self.top_zipcodes
+        sorted_zipcodes = zipcode_hash.sort_by{|k,v| v}.reverse
+        # puts "#{sorted_zipcodes[1], sorted_zipcodes[2], sorted_zipcodes[3], sorted_zipcodes[4], sorted_zipcodes[5]}"
+    end
 
+    # "11207"=>45,
 
     # @@all.select{|g| g.borough == "R"}.each {|b| b.index_card}
 

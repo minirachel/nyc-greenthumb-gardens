@@ -25,7 +25,7 @@ class Garden
         if borough == "B"
             "Brooklyn"
         elsif borough == "X"
-            "Bronx"
+            "the Bronx"
         elsif borough == "M"
             "Manhattan"
         elsif borough == "Q"

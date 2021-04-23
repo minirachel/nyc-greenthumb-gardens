@@ -10,7 +10,7 @@ class CommandLineInterface
     #switched make_gardens to initialize?
 
     def run
-        menu
+        Garden.top_zipcodes("all")
     end
 
     def menu
@@ -43,10 +43,7 @@ class CommandLineInterface
                                 puts "#{Garden.filter_by_borough("M").count} in Manhattan."
                                 puts "#{Garden.filter_by_borough("B").count} in Brooklyn."
                                 puts "#{Garden.filter_by_borough("M").count} in Staten Island."
-                                # puts "The ZIP codes with the most gardens are: #{Garden.top_zipcodes}"
-                                #number of garden count total
-                                #number of gardens by borough
-                                #top 5 zip codes
+                                puts "The ZIP codes with the most gardens are: #{Garden.top_zipcodes("all")}"
                             when "2"
                                 puts "Ok! Which borough are you in?"
                                 puts "[X] Bronx"
@@ -79,9 +76,8 @@ class CommandLineInterface
     end
 
     def active_garden_count
-        puts "a count of the active gardens"
+        Garden.filter_by_status("Active").count
     end
-
 
     def all_gardens_detail
         Garden.all.each {|g| index_card(g)}

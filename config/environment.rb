@@ -5,4 +5,4 @@ Bundler.require
 require_relative '../lib/scraper'
 require_relative '../lib/garden.rb'
 require_relative '../lib/command_line_interface.rb'
-require_relative '../bin/run.rb'
+# require_relative '../bin/run.rb'

@@ -37,7 +37,12 @@ class Garden
 
 
     def self.filter_by_borough(borough)
-        @@all.select {|g| g.borough == borough}
+        if borough == "all"
+            @@all
+        else
+            @@all.select {|g| g.borough == borough}
+        end
+
         #select creates a new array with all gardens (object IDs) that match it
         #map checks for argument (True/False)
     end
@@ -50,45 +55,25 @@ class Garden
         @@all.select {|g| g.status == status}
     end
 
-    def zipcode_hash
+
+    def self.zipcode_hash(borough)
         zipcode_count = {}
 
-        @@all.each do |g|
+        self.filter_by_borough(borough).each do |g|
             zipcode_count[g.zipcode] = self.filter_by_zip(g.zipcode).count
         end
 
         zipcode_count
-
-        #was there an easier way to do this?
     end
 
-    def self.top_zipcodes
-        sorted_zipcodes = zipcode_hash.sort_by{|k,v| v}.reverse
+    def self.top_zipcodes(borough)
+
+        sorted_zipcodes = self.zipcode_hash(borough).sort_by{|k,v| v}.reverse
+        sorted_zipcodes.first(5).each {|k,v| puts "#{v} gardens in #{k}"}
         # puts "#{sorted_zipcodes[1], sorted_zipcodes[2], sorted_zipcodes[3], sorted_zipcodes[4], sorted_zipcodes[5]}"
     end
 
-    # "11207"=>45,
 
-    # @@all.select{|g| g.borough == "R"}.each {|b| b.index_card}
-
-
-
-    #     ------------------------------------
-    #     ~*~ Highland Park Children's Garden ~*~
-    #      #Active
-    #      B - ZIP Code: 11208
-    #    ------------------------------------
-
-
-
-
-    # print_garden_by_borough
-        #top 5 zip codes, list gardens by name and ID number
-    # print_all_gardens_summary
-        #total active garden count, drills down by number by boroughs, top 10 zip codes overall
-    # print_garden_by_ZIP
-        #total active gardens in ZIP code, lists all gardens by name, ID number, and shape
-        # full index card format
 
 
     #shape_print

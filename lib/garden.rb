@@ -1,5 +1,4 @@
 require_relative '../config/environment.rb'
-
 require 'pry'
 
 class Garden
@@ -11,6 +10,7 @@ class Garden
         @borough = borough
         @gardenname = gardenname
         @multipolygon = multipolygon
+        Multipolygon.new(@multipolygon["coordinates"])
         @parksid = parksid
         @status = status
         @zipcode = zipcode

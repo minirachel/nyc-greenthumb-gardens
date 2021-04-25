@@ -2,7 +2,6 @@ require_relative '../config/environment.rb'
 require 'pry'
 require 'httparty'
 
-
 class Scraper
 
     def self.gardens_api

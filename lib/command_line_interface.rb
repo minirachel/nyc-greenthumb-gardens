@@ -1,5 +1,4 @@
 require_relative '../config/environment.rb'
-
 require 'pry'
 
 class CommandLineInterface
@@ -7,27 +6,25 @@ class CommandLineInterface
         Scraper.gardens_api
         Scraper.garden_hashes
     end
-    #switched make_gardens to initialize?
 
     def run
-        menu
+        Multipolygon.all.first.arraycount
     end
 
     def menu
         input = ""
 
-        while input != "9"
             puts " "
             puts "Welcome to GreenThumb the unofficial NYC Parks GreenThumb app."
             puts "What are you interested in learning about today? [enter a number]"
             puts " "
+        while input != "9"
             puts "~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~"
-            puts " "
+            puts "menu"
             puts "[1] How many gardens are there?"
             puts "[2] Show me a list of all gardens in the city, please."
             puts "[3] I'd like to see a random garden. Now."
-            puts "[4] Just say a sentence."
-            puts "[9] Let me leave."
+            puts "[9] Please, let me exit."
             puts " "
         input = gets.strip
             case input
@@ -43,12 +40,14 @@ class CommandLineInterface
                             when "1"
                                 puts " "
                                 puts "There are a total of #{Garden.all.count} gardens in New York City."
-                                puts "#{Garden.filter_by_borough("X").count} in the Bronx."
-                                puts "#{Garden.filter_by_borough("Q").count} in Queens."
-                                puts "#{Garden.filter_by_borough("M").count} in Manhattan."
-                                puts "#{Garden.filter_by_borough("B").count} in Brooklyn."
-                                puts "#{Garden.filter_by_borough("M").count} in Staten Island."
-                                puts "The top 5 ZIP codes are:" 
+                                puts " "
+                                puts "Bronx: #{Garden.filter_by_borough("X").count}"
+                                puts "Queens: #{Garden.filter_by_borough("Q").count}"
+                                puts "Manhattan: #{Garden.filter_by_borough("M").count}"
+                                puts "Brooklyn: #{Garden.filter_by_borough("B").count}"
+                                puts "Staten Island: #{Garden.filter_by_borough("M").count}"
+                                puts " "
+                                puts "The most vegetative ZIP codes are:" 
                                 puts " "
                                 Garden.top_zipcodes("all")
                             when "2"
@@ -91,8 +90,6 @@ class CommandLineInterface
                     all_gardens_detail
                 when "3"
                     random_garden
-                when "4"
-                    puts "This is a sentence to not run the index card function."
             end
         end
     end
@@ -132,8 +129,6 @@ class CommandLineInterface
             puts " "
         end
     end
-
-
 
 
 end

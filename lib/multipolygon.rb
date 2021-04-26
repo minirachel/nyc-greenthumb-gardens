@@ -21,6 +21,14 @@ class Multipolygon
 
 end
 
+#HOW TO DRAW A MULTIPOLYGON
+#take in the coordinate points through WKT format array
+#
+
+#print multiple lines based on a numerical width
+
+#COORDINATES ARE NOT ACTUAL GEO COORDINATES - unable to google maps... unless anatarctica
+
 # [4] pry(#<Garden>)> Multipolygon.all
 # => [#<Multipolygon:0x00007feffeb31528
 #   @coordinates=

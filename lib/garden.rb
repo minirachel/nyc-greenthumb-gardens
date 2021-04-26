@@ -69,7 +69,7 @@ class Garden
     def self.top_zipcodes(borough)
 
         sorted_zipcodes = self.zipcode_hash(borough).sort_by{|k,v| v}.reverse
-        sorted_zipcodes.first(5).each {|k,v| puts "#{v} gardens in #{k}"}
+        sorted_zipcodes.first(5).each {|k,v| puts "#{"#{v}".magenta} gardens in #{"#{k}".yellow}".indent(4)}
         # puts "#{sorted_zipcodes[1], sorted_zipcodes[2], sorted_zipcodes[3], sorted_zipcodes[4], sorted_zipcodes[5]}"
     end
 
@@ -78,10 +78,4 @@ class Garden
 
     #shape_print
         #WKT array into an ASCII art
-
-    #coordinates_to_address
-        #take first array pair from multipolygon
-        #use it to pull a nearby address on googlemaps
-        #OR provide a google maps link that will open a pin
-
 end

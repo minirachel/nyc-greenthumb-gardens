@@ -10,7 +10,6 @@ class Garden
         @borough = borough
         @gardenname = gardenname
         @multipolygon = multipolygon
-        Multipolygon.new(@multipolygon["coordinates"])
         @parksid = parksid
         @status = status
         @zipcode = zipcode
@@ -67,15 +66,10 @@ class Garden
     end
 
     def self.top_zipcodes(borough)
-
         sorted_zipcodes = self.zipcode_hash(borough).sort_by{|k,v| v}.reverse
         sorted_zipcodes.first(5).each {|k,v| puts "#{"#{v}".magenta} gardens in #{"#{k}".yellow}".indent(4)}
         # puts "#{sorted_zipcodes[1], sorted_zipcodes[2], sorted_zipcodes[3], sorted_zipcodes[4], sorted_zipcodes[5]}"
     end
 
 
-
-
-    #shape_print
-        #WKT array into an ASCII art
 end

@@ -116,8 +116,7 @@ class CommandLineInterface
                     puts "#{"Type in the garden ID to learn more about a specific location:".cyan}"
                     puts ""
                     input = gets.strip
-                        #switch drill_down to helper method
-                        #IF drill_down = true -> output parks info ELSE main menu
+
                     drill_down = find_by_parksid(input)
                     index_card(drill_down)
             
@@ -132,10 +131,9 @@ class CommandLineInterface
                     puts ""
                     puts "Here's a list of garden names in your borough."
                     zip_one_liner(input)
-                    puts "#{"Type in the garden ID to learn more about a specific location:".cyan}"
+                    puts "#{"Type in the #{"garden ID".magenta} to learn more about a specific location:".cyan}"
                     input = gets.strip
-                            #switch drill_down to helper method
-                            #IF drill_down = true -> output parks info ELSE main menu
+
                     drill_down = find_by_parksid(input)
                     index_card(drill_down)
 
@@ -144,13 +142,27 @@ class CommandLineInterface
                     random_garden
 
                 #search
-                # when "6"
-
+                when "6"
+                    puts "Type in the garden name or ID to pull up more info:"
+                    input = gets.strip
+                    search_function(input)
             end
         end
     end
 
-
+    def search_function(input)
+        if find_by_gardenname(input)
+            found_garden = find_by_gardenname(input)
+            index_card(found_garden)
+        elsif find_by_parksid(input)
+            found_garden = find_by_parksid(input)
+            index_card(found_garden)
+        else
+            puts "Sorry, I can't find that park. Are you sure you're spelling it correctly? Try again:"
+            input = gets.strip
+            search_function(input)
+        end
+    end
 
 
     def all_gardens_detail
@@ -165,8 +177,8 @@ class CommandLineInterface
         garden.tap do |g|
             puts "- - - - - - - - - - - - - - - - - - - - - - - - - - "
             puts ""
-            puts " ~*~ #{"#{g.gardenname}".blue} ~*~"
-            puts "  #{"#{g.parksid}".magenta}"
+            puts "  ~*~ #{"#{g.gardenname}".blue} ~*~"
+            puts "  #{"#{g.parksid}".magenta} (#{g.status})"
             puts "  #{Garden.translate_borough(g.borough)} - ZIP Code: #{"#{g.zipcode}".yellow}"
             puts ""
         end
@@ -174,14 +186,14 @@ class CommandLineInterface
 
     def borough_one_liner(input)
         Garden.filter_by_borough(input).each do |g|
-            puts "~*~ #{"#{g.gardenname}".blue} - #{g.parksid}"
+            puts "~*~ #{"#{g.gardenname}".blue} - #{"#{g.parksid}".magenta}"
             puts " "
         end
     end
 
     def zip_one_liner(input)
         Garden.filter_by_zip(input).each do |g|
-            puts "~*~ #{"#{g.gardenname}".blue} - #{g.parksid}"
+            puts "~*~ #{"#{g.gardenname}".blue} - #{"#{g.parksid}".magenta}"
             puts " "
         end
     end
@@ -202,13 +214,12 @@ class CommandLineInterface
         puts " "
     end
 
-    ##MOVE TO FINDABLE
     def find_by_parksid(input)
         Garden.all.detect {|g| g.parksid == input}
     end
 
-    def find_by_name(input)
-        Garden.all.detect {|g| g.name == input}
+    def find_by_gardenname(input)
+        Garden.all.detect {|g| g.gardenname == input}
     end
 
 

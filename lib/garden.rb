@@ -43,7 +43,6 @@ class Garden
         end
 
         #select creates a new array with all gardens (object IDs) that match it
-        #map checks for argument (True/False)
     end
 
     def self.filter_by_zip(zipcode)
@@ -58,17 +57,16 @@ class Garden
     def self.zipcode_hash(borough)
         zipcode_count = {}
 
-        self.filter_by_borough(borough).each do |g|
+        self.filter_by_borough(borough).map do |g|
             zipcode_count[g.zipcode] = self.filter_by_zip(g.zipcode).count
         end
 
         zipcode_count
     end
 
-    def self.top_zipcodes(borough)
-        sorted_zipcodes = self.zipcode_hash(borough).sort_by{|k,v| v}.reverse
-        sorted_zipcodes.first(5).each {|k,v| puts "#{"#{v}".magenta} gardens in #{"#{k}".yellow}".indent(4)}
-        # puts "#{sorted_zipcodes[1], sorted_zipcodes[2], sorted_zipcodes[3], sorted_zipcodes[4], sorted_zipcodes[5]}"
+    def self.print_top_zipcodes(borough)
+        highest_sorted_zipcodes = self.zipcode_hash(borough).sort_by{|k,v| v}.reverse
+        highest_sorted_zipcodes.first(5).map {|k,v| puts "#{"#{v}".magenta} gardens in #{"#{k}".yellow}".indent(4)}
     end
 
 

@@ -14,7 +14,7 @@ class Scraper
     def self.create_symbols
         gardens_symbols = []
 
-            self.gardens_api.each do |gardens_hash|
+            self.gardens_api.map do |gardens_hash|
                 gardens_symbols << gardens_hash.transform_keys(&:to_sym)
             end
 
@@ -22,7 +22,7 @@ class Scraper
     end
 
     def self.garden_hashes
-        self.create_symbols.each do |g|
+        self.create_symbols.map do |g|
             Garden.new(g[:borough], g[:gardenname], g[:multipolygon], g[:parksid], g[:status], g[:zipcode])
         end
     end

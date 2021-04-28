@@ -74,7 +74,7 @@ class CommandLineInterface
                             puts "There are #{"#{Garden.filter_by_borough(input).count}".magenta} in #{"#{Garden.translate_borough(input)}".yellow}."
                             puts "The most vegetative ZIP codes in your borough are:"
                             puts " "
-                            Garden.top_zipcodes(input)
+                            Garden.print_top_zipcodes(input)
 
                             puts " "
                             puts "~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~"
@@ -200,14 +200,14 @@ class CommandLineInterface
     end
 
     def borough_one_liner(input)
-        Garden.filter_by_borough(input).each do |g|
+        Garden.filter_by_borough(input).map do |g|
             puts "~*~ #{"#{g.gardenname}".blue} - #{"#{g.parksid}".magenta}"
             puts " "
         end
     end
 
     def zip_one_liner(input)
-        Garden.filter_by_zip(input).each do |g|
+        Garden.filter_by_zip(input).map do |g|
             puts "~*~ #{"#{g.gardenname}".blue} - #{"#{g.parksid}".magenta}"
             puts " "
         end
@@ -225,7 +225,7 @@ class CommandLineInterface
         puts " "
         puts "The most vegetative ZIP codes are:" 
         puts " "
-        Garden.top_zipcodes("all")
+        Garden.print_top_zipcodes("all")
         puts " "
     end
 

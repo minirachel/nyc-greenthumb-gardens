@@ -2,6 +2,7 @@ require_relative '../config/environment.rb'
 require 'pry'
 
 class CommandLineInterface
+
     def initialize
         Scraper.gardens_api
         Scraper.garden_hashes
@@ -26,7 +27,7 @@ class CommandLineInterface
             puts " "
             puts "[enter a number]".blue
             puts "#{"[1]".cyan} #{"How many".cyan} gardens are there?"
-            puts "#{"[2]".cyan} Show me a list of #{"all gardens".cyan} in the city, please."
+            puts "#{"[2]".cyan} Show me a (long) list of #{"all gardens".cyan} in the city, please."
             puts "#{"[3]".cyan} Show me a list of the gardens #{"in my borough".cyan}."
             puts "#{"[4]".cyan} Show me a list of the gardens #{"in my ZIP code".cyan}."
             puts "#{"[5]".cyan} I'd like to see #{"a random garden".cyan}. Now."
@@ -65,6 +66,11 @@ class CommandLineInterface
 
                             input = gets.strip
 
+                            until Garden.all.detect {|g| input == g.borough}
+                                puts "That's not a borough. Please try again (maybe without brackets and capitalized?)."
+                                input = gets.strip
+                            end
+
                             puts "There are #{"#{Garden.filter_by_borough(input).count}".magenta} in #{"#{Garden.translate_borough(input)}".yellow}."
                             puts "The most vegetative ZIP codes in your borough are:"
                             puts " "
@@ -77,18 +83,18 @@ class CommandLineInterface
                         when "3"
                             puts " "
                             puts "Ok! What is your ZIP code?"
+
                             input = gets.strip
+                            
+                            until Garden.all.detect {|g| input == g.zipcode}
+                                puts "I'm not finding that ZIP code in my system. Please try again. (stuck in a loop? 10031 has some good gardens)."
+                                input = gets.strip
+                            end
+
                             puts "There are #{"#{Garden.filter_by_zip(input).count}".magenta} GreenThumb Gardens in #{"#{input}".yellow}."
                             puts ""
                             puts "~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~"
-                            puts "Would you like a list of the gardens in your ZIP? Y/N"
                             zip_one_liner(input)
-                            # input = gets.strip
-
-                            # if input == "Y"
-                            #     zip_one_liner(input)
-                            # else
-
                     end
 
                 #all gardens
@@ -108,24 +114,33 @@ class CommandLineInterface
 
                     input = gets.strip
 
+                    until Garden.all.detect {|g| input == g.borough}
+                        puts "That's not a borough. Please try again (maybe without brackets and capitalized?)."
+                        input = gets.strip
+                    end
+
                     puts "~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~"
                     puts " "
                     puts "Here is a list of garden names in your borough."
                     borough_one_liner(input)
 
-                    puts "#{"Type in the garden ID to learn more about a specific location:".cyan}"
+                    puts "#{"Type in the #{"garden ID".magenta} to learn more about a specific location:".cyan}"
                     puts ""
                     input = gets.strip
 
                     drill_down = find_by_parksid(input)
                     index_card(drill_down)
-            
 
                 #zip report
                 when "4"
                     puts " "
                     puts "Ok! What is your ZIP code?"
                     input = gets.strip
+
+                    until Garden.all.detect {|g| input == g.zipcode}
+                        puts "I'm not finding that ZIP code in my system. Please try again. (stuck in a loop? 10031 has some good gardens)."
+                        input = gets.strip
+                    end
 
                     puts "~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~"
                     puts ""
@@ -166,7 +181,7 @@ class CommandLineInterface
 
 
     def all_gardens_detail
-        Garden.all.each {|g| index_card(g)}
+        Garden.all.map {|g| index_card(g)}
     end
     
     def random_garden

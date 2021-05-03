@@ -12,8 +12,6 @@ class CommandLineInterface
         menu
     end
 
-    #possibly scrape for Greenthumb websites through Parks ID? search?
-
     def menu
         input = ""
 
@@ -100,6 +98,8 @@ class CommandLineInterface
                 #all gardens
                 when "2"
                     all_gardens_detail
+                    puts "this is a long report! scroll up to see all of the gardens in New York City #{":)".yellow}"
+                    puts ""
 
                 #borough report
                 when "3"
@@ -123,6 +123,11 @@ class CommandLineInterface
                     puts " "
                     puts "Here is a list of garden names in your borough."
                     borough_one_liner(input)
+
+                    puts "#{"this is a long report!".yellow} scroll up to see all of the gardens in #{Garden.translate_borough(input)} #{":)".yellow}"
+                    puts ""
+                    puts ""
+                    puts ""
 
                     puts "#{"Type in the #{"garden ID".magenta} to learn more about a specific location:".cyan}"
                     puts ""

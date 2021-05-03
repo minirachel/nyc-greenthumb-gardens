@@ -14,5 +14,5 @@ Data pulled from the City of New York's NYC Open Data API.
 
 Admin's Note:
 - Certain data fields like "open hours" are available but are not filled in by most parks. Currently difficult to utilize. 
-- I would be happyt to build out corresponding voter district info, if interest arose!
+- I would be happy to build out corresponding voter district info, if interest arose!
 

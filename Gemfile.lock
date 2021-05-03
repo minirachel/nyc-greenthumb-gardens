@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    nyc_greenthumb_gardens (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -26,9 +31,10 @@ GEM
     multi_xml (0.6.0)
     nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
-    pry (0.14.0)
+    pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    rake (13.0.3)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -47,14 +53,16 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-20
 
 DEPENDENCIES
   httparty
   inkjet
   nokogiri (= 1.10.8)
+  nyc_greenthumb_gardens!
   pry
+  rake (~> 13.0)
   rspec
 
 BUNDLED WITH
-   2.1.4
+   2.2.16

@@ -1,5 +1,8 @@
 # Contributor Covenant Code of Conduct
 
+## Land Acknowledgement
+We acknowledge that the land and data gathered are on the unceded land of the Lenape and Canarsie peoples. We acknowledge the Lenape and Canarsie communities, their elders both past and present, as well as future generations. This acknowledgement demonstrates a commitment to beginning the process of working to dismantle the ongoing legacies of settler colonialism.
+
 ## Our Pledge
 
 We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.

@@ -1,4 +1,4 @@
-# Nyc::Greenthumb::Gardens
+# NycGreenthumbGardens
 
 An app to learn about the GreenThumb gardens in New York City.
 
@@ -10,6 +10,7 @@ Current Features:
 - Randomly pull one up a park to learn more
 - Search by park name or ID number
 - Data pulled from the City of New York's NYC Open Data API.
+
 
 ## Installation
 
@@ -48,3 +49,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the NycGreenthumbGardens project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/minirachel/nyc-greenthumb-gardens/blob/master/CODE_OF_CONDUCT.md).
+
+## Land Acknowledgement
+
+We (the app creators and users) acknowledge that the land used for these gardens are on the unceded land of the Lenape and Canarsie peoples. We acknowledge the Lenape and Canarsie communities, their elders both past and present, as well as future generations. This acknowledgement demonstrates a commitment to beginning the process of working to dismantle the ongoing legacies of settler colonialism.

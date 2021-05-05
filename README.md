@@ -28,7 +28,7 @@ Or install it yourself as:
 
     $ gem install nyc-greenthumb-gardens
 
-## Usage
+## How to Start
 
 Run `bin/run.rb` in your console for an interactive CLI menu.
 

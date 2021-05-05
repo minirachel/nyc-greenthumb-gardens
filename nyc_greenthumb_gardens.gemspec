@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "nyc_greenthumb_gardens"
   spec.version       = NycGreenthumbGardens::VERSION
   spec.authors       = ["minirachel"]
-  spec.email         = ["rachel.a.levinson@gmail.com"]
+  spec.email         = ["rachelscodingemail@gmail.com"]
 
   spec.summary       = "A CLI gem to explore NYC's GreenThumb gardens."
   spec.description   = "Filter through NYC's GreenThumb gardens by borough, ZIP code, parkname, or ID number. Pull reports or search at random."
@@ -14,11 +14,11 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
-  spec.metadata["allowed_push_host"] = "http://mygemserver.com"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/minirachel/nyc-greenthumb-gardens"
-  spec.metadata["changelog_uri"] = "https://github.com/minirachel/nyc-greenthumb-gardens"
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["changelog_uri"] = ""
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

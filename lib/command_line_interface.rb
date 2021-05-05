@@ -205,10 +205,13 @@ class CommandLineInterface
     end
 
     def borough_one_liner(input)
-        Garden.filter_by_borough(input).map do |g|
+        alphabatized_boroughs = Garden.filter_by_borough(input).sort_by {|g| g.gardenname}
+
+        alphabatized_boroughs.each do |g|
             puts "~*~ #{"#{g.gardenname}".blue} - #{"#{g.parksid}".magenta}"
             puts " "
         end
+
     end
 
     def zip_one_liner(input)

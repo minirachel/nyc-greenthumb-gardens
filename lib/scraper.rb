@@ -12,13 +12,9 @@ class Scraper
     end
 
     def self.create_symbols
-        gardens_symbols = []
-
             self.gardens_api.map do |gardens_hash|
-                gardens_symbols << gardens_hash.transform_keys(&:to_sym)
+                gardens_hash.transform_keys(&:to_sym)
             end
-
-        gardens_symbols
     end
 
     def self.garden_hashes

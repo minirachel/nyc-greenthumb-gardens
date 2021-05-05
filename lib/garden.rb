@@ -20,6 +20,7 @@ class Garden
         @@all
     end
 
+
     def self.translate_borough(borough)
         if borough == "B"
             "Brooklyn"

@@ -26,7 +26,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install nyc-greenthumb-gardens
+    $ gem install nyc_greenthumb_gardens
 
 ## How to Start
 
